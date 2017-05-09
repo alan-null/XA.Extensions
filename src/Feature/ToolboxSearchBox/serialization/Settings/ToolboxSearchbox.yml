@@ -1,0 +1,14 @@
+﻿---
+ID: "8c91161e-12b0-46d6-af56-bff6ad8da429"
+Parent: "2e14fcb1-8055-485b-84d8-5954f8a3354b"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: /sitecore/system/Settings/Feature/XA Extensions/ToolboxSearchbox
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170508T144516Z

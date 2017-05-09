@@ -1,0 +1,22 @@
+﻿---
+ID: "c22fb4cc-ed87-416c-af5b-bc08c5cd40b7"
+Parent: "ed43b3b2-f97e-4e28-a277-6d43faa01f0b"
+Template: "fe5dd826-48c6-436d-b87a-7c4210c7413b"
+Path: /sitecore/media library/Feature/XA Extensions/ToolboxSearchbox/ToolboxSearchbox/styles
+DB: master
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: Office/32x32/folder.png
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: Styles
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120913T152005

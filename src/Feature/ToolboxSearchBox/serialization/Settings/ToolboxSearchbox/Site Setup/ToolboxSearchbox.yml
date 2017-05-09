@@ -1,0 +1,22 @@
+﻿---
+ID: "210f119c-e649-486d-a2fa-e5bbb6dbd61c"
+Parent: "b99a1db2-ba44-41d1-9acc-c911048a68ce"
+Template: "37397cc6-d9e3-4f3e-b320-1ef5cc76cc2e"
+Path: /sitecore/system/Settings/Feature/XA Extensions/ToolboxSearchbox/Site Setup/ToolboxSearchbox
+DB: master
+SharedFields:
+- ID: "37a6a70b-d1ab-45f4-9306-047a853866ba"
+  Hint: Arguments
+  Type: Treelist
+  Value: "{ED43B3B2-F97E-4E28-A277-6D43FAA01F0B}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170508T144609Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: sitecore\Admin
