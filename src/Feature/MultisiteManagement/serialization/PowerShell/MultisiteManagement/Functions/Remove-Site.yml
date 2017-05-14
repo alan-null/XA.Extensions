@@ -1,0 +1,63 @@
+﻿---
+ID: "874d6011-61f5-459a-8aa5-c82c3692f238"
+Parent: "13729980-f568-4f0f-9792-ebc05f97879a"
+Template: "dd22f1b3-bd87-4db2-9e7d-f7a496888d43"
+Path: "/sitecore/system/Modules/PowerShell/Script Library/XA Extensions/MultisiteManagement/Functions/Remove-Site"
+DB: master
+SharedFields:
+- ID: "b1a94ff0-6897-47c0-9c51-aa6acb80b1f0"
+  Hint: Script
+  Value: |
+    function Remove-Site {
+        [CmdletBinding()]
+        param(
+            [Parameter(Mandatory = $true, Position = 0 )]
+            [Item]$SiteItem
+        )
+    
+        begin {
+            Write-Verbose "Cmdlet Remove-Site - Begin"
+            Import-Function Get-TenantItem
+            Import-Function Get-SiteMediaItem
+        }
+    
+        process {
+            Write-Verbose "Cmdlet Remove-Site - Process"
+    
+            $tenantItem = Get-TenantItem $SiteItem
+            $tenantMediaLibrary = Get-Item master: -ID $tenantItem.MediaLibrary
+    
+            $siteTail = $SiteItem.Paths.Path.Replace($tenantItem.Paths.Path, "")
+            if (Test-Path "$($tenantMediaLibrary.Paths.Path)/$siteTail") {
+                Write-Progress -Status "Removing '$($SiteItem.Name)' site" -Activity "Removing site media library" -Completed
+                $siteMediaLibraryRoot = Get-Item -Path "$($tenantMediaLibrary.Paths.Path)/$siteTail"
+                $siteMediaItem = Get-SiteMediaItem $SiteItem
+                if ($siteMediaItem -ne $null -and $siteMediaItem.AdditionalChildren.Contains($siteMediaLibraryRoot.ID)) {
+                    $siteMediaLibraryRoot.Recycle() | Out-Null
+                }
+            }
+    
+            $SiteItem.Children |  ForEach-Object { 
+                Write-Progress -Status "Removing '$($SiteItem.Name)' site" -Activity "Removing '$($_.Name)' item" -Completed    
+                $_.Recycle() | Out-Null
+            }
+    
+            Write-Progress -Status "Removing '$($SiteItem.Name)' site" -Activity "Removing site item" -Completed
+            $SiteItem.Recycle() | Out-Null
+        }
+    
+        end {
+            Write-Verbose "Cmdlet Remove-Site - End"
+        }
+    }
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170404T070850Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: sitecore\Admin

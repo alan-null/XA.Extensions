@@ -1,0 +1,141 @@
+﻿---
+ID: "23dfb493-3cc0-494f-8c7e-0d8001a955d3"
+Parent: "13729980-f568-4f0f-9792-ebc05f97879a"
+Template: "dd22f1b3-bd87-4db2-9e7d-f7a496888d43"
+Path: "/sitecore/system/Modules/PowerShell/Script Library/XA Extensions/MultisiteManagement/Functions/Remove-Tenant"
+DB: master
+SharedFields:
+- ID: "b1a94ff0-6897-47c0-9c51-aa6acb80b1f0"
+  Hint: Script
+  Value: |
+    function Remove-Tenant {
+        [CmdletBinding()]
+        param(
+            [Parameter(Mandatory = $true, Position = 0 )]
+            [Item]$TenantItem
+        )
+    
+        begin {
+            Write-Verbose "Cmdlet Remove-Tenant - Begin"
+            Import-Function Remove-Site
+            Import-Function Remove-SiteFolder
+        }
+    
+        process {
+            Write-Verbose "Cmdlet Remove-Tenant - Process"
+            Write-Progress -Status "Removing '$($TenantItem.Name)' tenant" -Activity "Getting tenant root item" -Completed
+            $siteItemTemplateId = [Sitecore.XA.Foundation.Multisite.Templates+Site]::ID.ToString()
+            $siteFolderTemplateId = [Sitecore.XA.Foundation.Multisite.Templates+SiteFolder]::ID.ToString()
+    
+            Write-Progress -Status "Removing '$($TenantItem.Name)' tenant" -Activity "Getting all sites" -Completed
+            [Sitecore.Data.Items.Item[]]$sites = Get-ChildItem -Path $TenantItem.Paths.Path -Recurse | ? { [Sitecore.Data.Managers.TemplateManager]::GetTemplate($_).InheritsFrom($siteItemTemplateId) }
+            $sites | Where-Object { $_ -ne $null } | % { Remove-Site $_ }
+            
+            Write-Progress -Status "Removing '$($TenantItem.Name)' tenant" -Activity "Getting all site folders" -Completed
+            [Sitecore.Data.Items.Item[]]$siteFolders = Get-ChildItem -Path $TenantItem.Paths.Path -Recurse | ? { [Sitecore.Data.Managers.TemplateManager]::GetTemplate($_).InheritsFrom($siteFolderTemplateId) }
+            $siteFolders | Where-Object { $_ -ne $null } | % { Remove-SiteFolder $_ }
+    
+            $tenantTemplatesRoot = Get-Item master: -ID $TenantItem.Templates
+            $tenantMediaLibrary = Get-Item master: -ID $TenantItem.MediaLibrary
+    
+            Write-Progress -Status "Removing '$($TenantItem.Name)' tenant" -Activity "Removing tenant item" -Completed
+            if ($TenantItem.Children.Count -eq 0) {
+                $TenantItem.Recycle() | Out-Null
+            }else {
+                Write-Error "Could not remove tenant item '$($item.Paths.Path)' as there are other folders/items inside"
+            }        
+    
+            Write-Progress -Status "Removing '$($TenantItem.Name)' tenant" -Activity "Removing tenant templates" -Completed
+            Remove-TenantTemplates $tenantTemplatesRoot
+    
+            Write-Progress -Status "Removing '$($TenantItem.Name)' tenant" -Activity "Removing tenant media library" -Completed
+            if ($tenantMediaLibrary.Children.Count -eq 0 -or ($tenantMediaLibrary.Children.Count -eq 1 -and $tenantMediaLibrary.Children[0].Name -eq "shared")) {
+                $tenantMediaLibrary.Recycle() | Out-Null
+            }else {
+                Write-Error "Could not remove tenant media library '$($item.Paths.Path)' as there are other folders/items inside"
+            }        
+    
+            Write-Progress -Status "Removing '$($TenantItem.Name)' tenant" -Activity "Done" -Completed
+    
+        }
+    
+        end {
+            Write-Verbose "Cmdlet Remove-Tenant - End"
+        }
+    }
+    
+    function Test-NoneItemIsUsingTemplate {
+        [CmdletBinding()]
+        param(
+            [Parameter(Mandatory = $true, Position = 0 )]
+            [Item]$TemplateItem
+        )
+    
+        begin {
+            Write-Verbose "Cmdlet Test-NoneItemIsUsingTemplate - Begin"
+        }
+    
+        process {
+            Write-Verbose "Cmdlet Test-NoneItemIsUsingTemplate - Process"
+            $templateId = $templateItem.ID
+            $query = "/sitecore/content//*[@@templateid = '$templateId']"
+            $items = Get-Item -Path master: -Language "en" -Query $query
+            if ($items) {
+                $false
+            }
+            else {
+                $true
+            }
+        }
+    
+        end {
+            Write-Verbose "Cmdlet Test-NoneItemIsUsingTemplate - End"
+        }
+    }
+    
+    function Remove-TenantTemplates {
+        [CmdletBinding()]
+        param(
+            [Parameter(Mandatory = $true, Position = 0 )]
+            [Item]$TenantTemplatesRoot
+        )
+    
+        begin {
+            Write-Verbose "Cmdlet Remove-TenantTemplates - Begin"
+        }
+    
+        process {
+            Write-Verbose "Cmdlet Remove-TenantTemplates - Process"
+            $tenantTemplates = Get-ChildItem -Path $TenantTemplatesRoot.Paths.Path -Recurse | ? { $_.TemplateName -eq 'Template' }
+            $canRemoveRoot = $true
+            $tenantTemplates | Where-Object {
+                $template = $_
+                $notUsed = Test-NoneItemIsUsingTemplate $template
+                if ($notUsed) {
+                    $template.Recycle() | Out-Null
+                }
+                else {
+                    Write-Host "Could not remove template item as it is being used by at least one item" -ForegroundColor Cyan
+                    $canRemoveRoot = $false
+                }
+            }
+            if ($canRemoveRoot) {
+                $TenantTemplatesRoot.Recycle() | Out-Null
+            }
+        }
+    
+        end {
+            Write-Verbose "Cmdlet Remove-TenantTemplates - End"
+        }
+    }
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170404T070850Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: sitecore\Admin

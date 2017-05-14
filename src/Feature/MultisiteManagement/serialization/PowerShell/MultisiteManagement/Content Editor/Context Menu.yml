@@ -1,0 +1,17 @@
+﻿---
+ID: "58dafb42-9cda-4a4c-a5b5-5aab834b5747"
+Parent: "c931960c-1830-4ec5-910f-4c12f60cfea9"
+Template: "ab154d3d-1126-4ab4-ac21-8b86e6bd70ea"
+Path: /sitecore/system/Modules/PowerShell/Script Library/XA Extensions/MultisiteManagement/Content Editor/Context Menu
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170510T090830Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: sitecore\Admin

@@ -1,0 +1,87 @@
+<project>
+  <Metadata>
+    <metadata>
+      <PackageName>MultisiteManagement</PackageName>
+      <Author>Alan Płócieniak</Author>
+      <Version>1.0</Version>
+      <Revision />
+      <License></License>
+      <Comment />
+      <Attributes />
+      <Readme />
+      <Publisher>Alan Płócieniak</Publisher>
+      <PostStep />
+      <PackageID />
+    </metadata>
+  </Metadata>
+  <SaveProject>True</SaveProject>
+  <Sources>
+    <xitems>
+      <Entries>
+        <x-item>/master/sitecore/media library/Feature/XA Extensions/{BB2E2496-AED3-4EBC-9D38-F54E0F547E5D}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/PowerShell/Script Library/XA Extensions/{97448B3A-A55E-44A9-A031-A020FA5D397F}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Settings/Feature/XA Extensions/{2E14FCB1-8055-485B-84D8-5954F8A3354B}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Skip</ItemMode>
+                  <ItemMergeMode>Clear</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>Foundation Roots</Name>
+    </xitems>
+    <xitems>
+      <Entries>
+        <x-item>/master/sitecore/system/Modules/PowerShell/Script Library/XA Extensions/MultisiteManagement/{5BEA8659-6EAA-49F8-B1B1-9E41138B0C3B}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/PowerShell/Script Library/XA Extensions/MultisiteManagement/Content Editor/{C931960C-1830-4EC5-910F-4C12F60CFEA9}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/PowerShell/Script Library/XA Extensions/MultisiteManagement/Content Editor/Context Menu/{58DAFB42-9CDA-4A4C-A5B5-5AAB834B5747}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/PowerShell/Script Library/XA Extensions/MultisiteManagement/Content Editor/Context Menu/Remove Site Folder/{7B5262CB-EFEA-446F-9062-1364BE4FB0C6}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/PowerShell/Script Library/XA Extensions/MultisiteManagement/Content Editor/Context Menu/Remove Site/{87541C3F-266E-4958-BA9A-A87397ED5867}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/PowerShell/Script Library/XA Extensions/MultisiteManagement/Content Editor/Context Menu/Remove Tenant/{9C839C57-7BF5-4541-897B-AE05DF19F8E6}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/PowerShell/Script Library/XA Extensions/MultisiteManagement/Content Editor/Context Menu/Remove TenantFolder/{18B78A16-01D5-4286-84E7-54A06603CF73}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/PowerShell/Script Library/XA Extensions/MultisiteManagement/Functions/{13729980-F568-4F0F-9792-EBC05F97879A}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/PowerShell/Script Library/XA Extensions/MultisiteManagement/Functions/Remove-Site/{874D6011-61F5-459A-8AA5-C82C3692F238}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/PowerShell/Script Library/XA Extensions/MultisiteManagement/Functions/Remove-SiteFolder/{B88F0283-D934-4490-BD2D-4ED0E4A8EDFD}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/PowerShell/Script Library/XA Extensions/MultisiteManagement/Functions/Remove-Tenant/{23DFB493-3CC0-494F-8C7E-0D8001A955D3}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/PowerShell/Script Library/XA Extensions/MultisiteManagement/Functions/Remove-TenantFolder/{7DA8887A-88D4-4EC2-9DEE-1562257A61F4}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Overwrite</ItemMode>
+                  <ItemMergeMode>Clear</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>PowerShell</Name>
+    </xitems>
+  </Sources>
+  <Converter>
+    <TrivialConverter>
+      <Transforms />
+    </TrivialConverter>
+  </Converter>
+  <Include />
+  <Exclude />
+  <Name />
+</project>
