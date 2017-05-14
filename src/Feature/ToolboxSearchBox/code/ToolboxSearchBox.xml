@@ -1,0 +1,108 @@
+<project>
+  <Metadata>
+    <metadata>
+      <PackageName>ToolboxSearchbox</PackageName>
+      <Author>Alan Płócieniak</Author>
+      <Version>1.0</Version>
+      <Revision />
+      <License />
+      <Comment />
+      <Attributes />
+      <Readme />
+      <Publisher>Alan Płócieniak</Publisher>
+      <PostStep />
+      <PackageID />
+    </metadata>
+  </Metadata>
+  <SaveProject>True</SaveProject>
+  <Sources>
+    <xitems>
+      <Entries>
+        <x-item>/master/sitecore/media library/Feature/XA Extensions/{BB2E2496-AED3-4EBC-9D38-F54E0F547E5D}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/PowerShell/Script Library/XA Extensions/{97448B3A-A55E-44A9-A031-A020FA5D397F}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Settings/Feature/XA Extensions/{2E14FCB1-8055-485B-84D8-5954F8A3354B}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Skip</ItemMode>
+                  <ItemMergeMode>Clear</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>Foundation Roots</Name>
+    </xitems>
+    <xitems>
+      <Entries>
+        <x-item>/master/sitecore/system/Settings/Feature/XA Extensions/ToolboxSearchbox/{8C91161E-12B0-46D6-AF56-BFF6AD8DA429}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Settings/Feature/XA Extensions/ToolboxSearchbox/Site Setup/{B99A1DB2-BA44-41D1-9ACC-C911048A68CE}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Settings/Feature/XA Extensions/ToolboxSearchbox/Site Setup/ToolboxSearchbox/{210F119C-E649-486D-A2FA-E5BBB6DBD61C}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Overwrite</ItemMode>
+                  <ItemMergeMode>Clear</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>Settings</Name>
+    </xitems>
+    <xitems>
+      <Entries>
+        <x-item>/master/sitecore/media library/Feature/XA Extensions/ToolboxSearchbox/{019D2870-53C4-49DD-B632-4275A9566F5D}/invariant/0</x-item>
+        <x-item>/master/sitecore/media library/Feature/XA Extensions/ToolboxSearchbox/ToolboxSearchbox/{ED43B3B2-F97E-4E28-A277-6D43FAA01F0B}/invariant/0</x-item>
+        <x-item>/master/sitecore/media library/Feature/XA Extensions/ToolboxSearchbox/ToolboxSearchbox/Images/{EAC1EAD6-7D4A-427D-A0FC-96F4775F1447}/invariant/0</x-item>
+        <x-item>/master/sitecore/media library/Feature/XA Extensions/ToolboxSearchbox/ToolboxSearchbox/Images/ic_close_black_24dp_1x-b/{7D1CB820-46AE-4064-BF3D-9E642F8CD4C0}/invariant/0</x-item>
+        <x-item>/master/sitecore/media library/Feature/XA Extensions/ToolboxSearchbox/ToolboxSearchbox/Scripts/{4610001D-6FF9-4057-8F47-74BA0010C959}/invariant/0</x-item>
+        <x-item>/master/sitecore/media library/Feature/XA Extensions/ToolboxSearchbox/ToolboxSearchbox/Scripts/Application/{0938FC70-6351-4747-BDA2-14D35ED086C1}/invariant/0</x-item>
+        <x-item>/master/sitecore/media library/Feature/XA Extensions/ToolboxSearchbox/ToolboxSearchbox/styles/{C22FB4CC-ED87-416C-AF5B-BC08C5CD40B7}/invariant/0</x-item>
+        <x-item>/master/sitecore/media library/Feature/XA Extensions/ToolboxSearchbox/ToolboxSearchbox/styles/toolboxSearchBox/{01159182-42C4-4F5D-B329-EA27AA842E5A}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Overwrite</ItemMode>
+                  <ItemMergeMode>Clear</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>Media</Name>
+    </xitems>
+  </Sources>
+  <Converter>
+    <TrivialConverter>
+      <Transforms />
+    </TrivialConverter>
+  </Converter>
+  <Include />
+  <Exclude />
+  <Name />
+</project>
