@@ -5,6 +5,20 @@ The main goal of this solution is to show how you can integrate with **SXA** by 
 
 Solution uses [Helix](http://helix.sitecore.net/)
 
+# Extensions
+### ToolboxSearchBox
+Toolbox Search Box solves a problem of searching a proper toolbox section which contains rendering that you want to add to the page.
+[Read more](https://alan-null.github.io/2017/05/sxa-toolbox-searchbox)
+
+![ToolboxSearchBox demo](https://alan-null.github.io/images/posts/sxa-toolbox-searchbox/demo.gif)
+
+
+### MultisiteManagement
+
+Multisite Management solves a problem of manual removal and helps you to easy and quickly clean up your database.
+[Read more](https://alan-null.github.io/2017/05/sxa-multisite-management)
+
+![MultisiteManagement demo](https://alan-null.github.io/images/posts/sxa-multisite-management/demo.gif)
 
 # Installation
 ## Clone Repository
