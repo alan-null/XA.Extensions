@@ -24,21 +24,14 @@ SharedFields:
         process {
             Write-Verbose "Cmdlet Remove-Site - Process"
     
-            $tenantItem = Get-TenantItem $SiteItem
-            $tenantMediaLibrary = Get-Item master: -ID $tenantItem.MediaLibrary
+            $SiteMediaLibrary = $SiteItem.Database.GetItem($SiteItem.SiteMediaLibrary)
+            $ThemesFolder = $SiteItem.Database.GetItem($SiteItem.ThemesFolder)
     
-            $siteTail = $SiteItem.Paths.Path.Replace($tenantItem.Paths.Path, "")
-            if (Test-Path "$($tenantMediaLibrary.Paths.Path)/$siteTail") {
-                Write-Progress -Status "Removing '$($SiteItem.Name)' site" -Activity "Removing site media library" -Completed
-                $siteMediaLibraryRoot = Get-Item -Path "$($tenantMediaLibrary.Paths.Path)/$siteTail"
-                $siteMediaItem = Get-SiteMediaItem $SiteItem
-                if ($siteMediaItem -ne $null -and $siteMediaItem.AdditionalChildren.Contains($siteMediaLibraryRoot.ID)) {
-                    $siteMediaLibraryRoot.Recycle() | Out-Null
-                }
-            }
+            $SiteMediaLibrary.Recycle() | Out-Null
+            $ThemesFolder.Recycle() | Out-Null
     
-            $SiteItem.Children |  ForEach-Object { 
-                Write-Progress -Status "Removing '$($SiteItem.Name)' site" -Activity "Removing '$($_.Name)' item" -Completed    
+            $SiteItem.Children |  ForEach-Object {
+                Write-Progress -Status "Removing '$($SiteItem.Name)' site" -Activity "Removing '$($_.Name)' item" -Completed
                 $_.Recycle() | Out-Null
             }
     
