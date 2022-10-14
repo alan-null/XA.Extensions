@@ -8,8 +8,6 @@ namespace XA.Extensions.Feature.Search.Models
     {
         public long TotalTime { get; set; }
 
-        public long CountTime { get; set; }
-
         public long QueryTime { get; set; }
 
         public string Signature { get; set; }
@@ -25,7 +23,6 @@ namespace XA.Extensions.Feature.Search.Models
         public SerializableResultSet(ResultSet resultSet)
         {
             TotalTime = resultSet.TotalTime;
-            CountTime = resultSet.CountTime;
             QueryTime = resultSet.QueryTime;
             Signature = resultSet.Signature;
             Index = resultSet.Index;

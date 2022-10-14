@@ -2,14 +2,16 @@
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.ModelBinding;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Sitecore;
 using Sitecore.DependencyInjection;
-using Sitecore.Web;
+using Sitecore.XA.Feature.Search.Binder;
 using Sitecore.XA.Feature.Search.Filters;
 using Sitecore.XA.Foundation.Abstractions;
 using Sitecore.XA.Foundation.Caching;
+using Sitecore.XA.Foundation.Search.Models.Binding;
 using XA.Extensions.Feature.Search.Models;
 
 namespace XA.Extensions.Feature.Search.Controllers
@@ -26,7 +28,7 @@ namespace XA.Extensions.Feature.Search.Controllers
 
         [ActionName("CachedResults")]
         [RegisterSearchEvent]
-        public SerializableResultSet GetCachedResults(string v = null, string q = null, string s = null, string l = null, string g = null, string o = null, int e = 0, int p = 20, string sig = null, string site = null)
+        public SerializableResultSet GetCachedResults([ModelBinder(BinderType = typeof(QueryModelBinder))] QueryModel model)
         {
             SerializableResultSet result;
             var stopwatch = new System.Diagnostics.Stopwatch();
@@ -37,7 +39,7 @@ namespace XA.Extensions.Feature.Search.Controllers
                 var cacheValue = Cache.Get(cacheKey);
                 if (cacheValue == null)
                 {
-                    result = new SerializableResultSet(GetResults(v, q, s, l, g, o, e, p, sig, site));
+                    result = new SerializableResultSet(GetResults(model));
                     StoreInCache(result, cacheKey);
                 }
                 else
@@ -47,7 +49,7 @@ namespace XA.Extensions.Feature.Search.Controllers
             }
             else
             {
-                result = new SerializableResultSet(GetResults(v, q, s, l, g, o, e, p, sig, site));
+                result = new SerializableResultSet(GetResults(model));
             }
             stopwatch.Stop();
             result.TotalTime = stopwatch.ElapsedMilliseconds;
